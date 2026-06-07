@@ -8,15 +8,19 @@ export default function Home() {
   
   const [formData, setFormData] = useState({
     name: '', 
-    education: 'Graduate',
+    education: 'Undergraduate',
     interest: 'coding',
-    careerField: 'web-dev'
+    careerField: 'Web Development'
   });
 
   const handleInterestChange = (interestValue) => {
-    let defaultCareer = 'web-dev';
+    let defaultCareer = 'Web Development';
     if (interestValue === 'data-science') {
-      defaultCareer = 'data-science';
+      defaultCareer = 'Data Scientist';
+    }else if(interestValue === "design"){
+      defaultCareer = 'UI/UX Designer'
+    }else if(interestValue === 'marketing'){
+      defaultCareer ='Digital Marketing Specialist'
     }
     
     setFormData({
@@ -105,8 +109,10 @@ export default function Home() {
                   onChange={(e) => handleInterestChange(e.target.value)} 
                   className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:border-blue-500 cursor-pointer"
                 >
-                  <option value="Software Coding">Software Development & Coding</option>
-                  <option value="Data Science & Analytics">Data Science & Analytics</option>
+                  <option value="coding">Software Development & Coding</option>
+                  <option value="data-science">Data Science & Analytics</option>
+                  <option value="design">Design</option>
+                  <option value="marketing">Marketing</option>
                 </select>
                 <div className="flex gap-3 mt-6">
                   <button type="button" onClick={prevStep} className="w-1/2 bg-slate-100 text-slate-700 p-3 rounded-xl font-semibold text-sm hover:bg-slate-200 transition-colors">
@@ -124,21 +130,36 @@ export default function Home() {
                 <p className="text-xs text-slate-500 mb-4">Select the specific job track based on your interest.</p>
                 
                 <select 
-                  value={formData.careerField} 
-                  onChange={(e) => setFormData({...formData, careerField: e.target.value})} 
-                  className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:border-blue-500 cursor-pointer"
-                >
-                  {formData.interest === 'coding' || formData.interest === 'Software Coding' ? (
-                    <>
-                      <option value="web-dev">Web Developer Track</option>
-                      <option value="frontend-dev">Frontend Developer Specialization</option>
-                    </>
-                  ) : (
-                    <>
-                      <option value="data-science">Data Scientist Track</option>
-                      <option value="data-analyst">Junior Data Analyst Track</option>
-                    </>
-                  )}
+                value={formData.careerField} 
+                onChange={(e) => setFormData({...formData, careerField: e.target.value})} 
+                className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:border-blue-500 cursor-pointer"
+              >
+                
+                {(formData.interest === 'coding') && (
+                  <>
+                    <option value="Web Development">Web Developer Track</option>
+                    <option value="Frontend Developer">Frontend Developer Specialization</option>
+                  </>
+                )}
+
+                {(formData.interest === 'data-science' ) && (
+                  <>
+                    <option value="Data Scientist">Data Scientist Track</option>
+                    <option value="Data Analyst"> Data Analyst Track</option>
+                  </>
+                )}
+
+                {(formData.interest === 'design') && (
+                  <>
+                    <option value="UI/UX Designer">UI/UX Designer Track</option>
+                  </>
+                )}
+
+                {(formData.interest === 'marketing') && (
+                  <>
+                    <option value="Digital Marketing Specialist">Digital Marketing Specialist</option>
+                  </>
+                )}
                 </select>
 
                 <div className="flex gap-3 mt-6">

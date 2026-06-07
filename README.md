@@ -1,78 +1,90 @@
-# CareerBridge - Proof of Concept (POC)
+# CareerBridge - Full-Stack Proof of Concept (POC)
 
-CareerBridge is a dynamic, user-centric career guidance platform built as part of the Tequity Consulting intern assessment. It features a progressive multi-step onboarding flow, data-driven tailored career roadmaps, structured actionable checklists, and a standalone comprehensive mentors directory.
+CareerBridge is a dynamic, user-centric career guidance platform built as a high-velocity Proof of Concept (POC) for the Tequity Consulting intern assessment. It features a progressive multi-step onboarding flow, context-aware user profile tracking, interest-targeted career roadmaps, a modular action checklist, and an independent master mentors directory.
 
-## 🚀 Live Links & Deliverables
-- **Live Application**: [Insert Your Vercel Deployment Link Here]
-- **Source Code**: [Insert Your GitHub Repository Link Here]
-- **Walkthrough Video**: [Insert Your Loom Video Link Here]
-
----
-
-## 🛠️ Tech Stack & Architectural Decisions
-
-- **Frontend & Routing**: **Next.js (App Router)** - Chosen for its modern, file-based routing architecture which enables high-utility features like dynamic state-based parameters (`/dashboard?type=...`) and independent standalone views (`/mentors`).
-- **Styling**: **Tailwind CSS** - Used to deliver a responsive, clean, and modern UI/UX design with precise typography and visual progress mapping.
-- **State Management & Data Architecture**: **React State Hook & Fallback Objects** - Implemented robust client-side filtering and data synchronization without introducing database bottlenecks, perfectly aligning with the strict 5-day scope.
+## 🚀 Live Project URLs
+- **Live Deployment Link**: [Insert Your Vercel Deployment Link Here]
+- **Source Code Repository**: https://github.com/mamtasoni233/career-bridge-poc
+- **Video Presentation Walkthrough**: [Insert Your Loom Video Link Here]
 
 ---
 
-## ✨ Core Features Implemented
+## 🛠️ Core Features Implemented
 
-1. **User Onboarding Flow (Form Container)**: A progressive 3-step form containing input fields for Candidate Name, Education Level, and Areas of Interest to gather user context seamlessly.
-2. **Dynamic Profile Summary**: Synchronizes form inputs via query parameters to display a verified profile summary badge system on top of the main layout.
-3. **Tailored Career Roadmap View**: Automatically maps the selected interest track to predefined, multi-stage visual career paths (e.g., Web Developer, Frontend Specialization, Data Scientist, Junior Data Analyst).
-4. **Actionable Checklist Widget**: A targeted callout container titled *"What to do this week"* featuring a custom checkbox interface for immediate, sector-specific tasks.
-5. **Standalone Mentors Directory**: Features a clean component integration within the main view alongside an independent `/mentors` page containing an exhaustive directory of certified industry professionals.
+1. **Progressive Onboarding Flow (3-Step Form)**: Captures user context across Candidate Name, Education Level, and Core Area of Interest seamlessly.
+2. **Dynamic UI/UX Conditional Filtering**: The target role options on Step 3 automatically adapt based on the Step 2 choice (`software coding` ➔ Web/Frontend, `data-science` ➔ Data Scientist/Analyst, `design` ➔ UI/UX Designer, `marketing` ➔ Digital Marketing Specialist).
+3. **Synchronized User Profile Summary Header**: Extracts variables from URL query parameters to construct a persistent personal welcome greeting and verified badge indicator banner (`/dashboard?name=...&education=...&interest=...`).
+4. **Tailored Career Roadmap View**: Maps user-specific tracks to high-utility milestone guides outlining technical skill acquisition dynamically.
+5. **Decoupled Next Steps Widget (Section 3.4)**: Extracted into a standalone modular client-side component (`NextSteps.jsx`) that renders specific practical weekly tasks based on the chosen track. Features interactive checkbox elements with responsive line-through/strikeout status updates.
+6. **Isolated Mentors Directory View**: Integrated direct route linking (`Link` component) that cleanly opens a standalone directory route (`/mentors`) listing master profiles.
 
 ---
 
-## 📁 Repository Directory Structure
+## 🔮 Future Scope & Scalability (According to PDF Evolution Requirements)
+
+If given more development timeline, the platform will scale across these three distinct layers to meet production-level standards:
+
+1. **AI-Driven Personalization (Section 4 Compatibility)**: Integrating Large Language Model (LLM) microservices via API endpoints to replace rule-based mock dictionaries, providing hyper-personalized, non-linear career roadmaps based on resume uploads and historical user behavior analysis.
+2. **Persistent Database Integration & Session Authentication**: Adding a relational database tier (PostgreSQL or MongoDB) combined with NextAuth (Auth.js) to securely persist user sessions, securely store profile structures, and track checklist history over multiple weeks.
+3. **Live Mentor Booking Workspace**: Upgrading the static mentor directory into an active engagement layer with scheduling API integrations (Cal.com or Calendly) and real-time chat spaces for instant mentor-mentee connectivity and video mock interview sessions.
+
+---
+
+## 📂 Project Architecture & Directory Layout
 
 ```text
 CAREER-BRIDGE
 ├── src/
 │   ├── app/                  
 │   │   ├── dashboard/        
-│   │   │   └── page.js       # Dynamic Dashboard view mapping query params
+│   │   │   └── page.js       # Dynamic Dashboard view mapping query parameters
 │   │   ├── mentors/          
-│   │   │   └── page.js       # Standalone Master Mentors directory layout
+│   │   │   └── page.js       # Standalone Master Mentors directory route
 │   │   ├── layout.js
 │   │   ├── globals.css
-│   │   └── page.js           # Progressive Onboarding multi-step form
+│   │   └── page.js           # Progressive Onboarding form engine
 │   │
-│   └── components/           
-│       └── Dashboard.jsx     # Reusable conditional layout engine
+│   ├── components/           
+│   │   ├── Dashboard.jsx     # Career assessment presentation grid
+│   │   ├── Header.jsx        # Resuable header component
+│   │   └── NextSteps.jsx     # Decoupled interactive checklist layout module
+│   │
+│   └── data/                 
+│       ├── mentors.js        # Hardcoded master mentor structures
+│       └── roadmaps.js       # Structured 4-track schema dictionaries
 ```
 
 ---
 
-## 🏃‍♂️ How to Run Locally
+## 💻 Tech Stack & Architectural Justifications
 
-Follow these steps to spin up the development environment on your local machine:
-
-1. **Clone the repository:**
-   ```bash
-   git clone [Insert Your GitHub Repo URL]
-   cd career-bridge
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open in browser:**
-   Navigate to `http://localhost:3000` to interact with the system.
+- **Framework**: **Next.js (App Router)** - Selected for its production-grade file routing framework, enabling swift component isolation, automatic performance optimizations, and robust search parameter parsing.
+- **Styling Layout Engine**: **Tailwind CSS** - Chosen to compose clean visual structures, responsive grids, and uniform typography quickly to preserve design fidelity within a tight timeline.
+- **State Architecture**: **State Hooks & Query Parameters** - Utilized state hooks for local UI controls and synchronized URL queries to sync data globally across separate view trees, preventing data drops during router switches while avoiding dehydration issues or server-rendering errors tied to browser LocalStorage.
 
 ---
 
+## 🏃‍♂️ Local Machine Spinning Guide
+
+Follow these steps to run the project on your local machine:
+
+1. Clone the repository down to your directory setup:
+   ```bash
+   git clone [Insert Your GitHub Repo URL Here]
+   cd career-bridge
+   ```
+2. Fetch and deploy all necessary build-dependencies:
+   ```bash
+   npm install
+   ```
+3. Boot up the local runtime compilation environment:
+   ```bash
+   npm run dev
+   ```
+4. Access via browser address space: `http://localhost:3000`
+
+---
 ## 🎯 Evaluation Criteria Met (Scope Management)
-- **No Complex DB Overhead**: Strictly relied on fixed, robust JSON schema dictionaries for instant, rule-based data loading as explicitly requested.
-- **No Auth Bottlenecks**: Skipped user sign-up/login processes to optimize development velocity and perfect the required core feature views.
-- **Responsive Framework Design**: Structured using clean layout components that degrade gracefully on varying screen dimensions.
+- **No Complex DB Overhead**: Strictly relied on fixed, robust JSON schema dictionaries for instant, - - rule-based data loading as explicitly requested.
+- **No Sign-In Friction Barriers**: Skipped user sign-up/login processes to optimize development velocity and perfect the required core feature views.
+- **Responsive Framework Design**: Structured using clean, modern layout components that degrade gracefully across varying mobile, tablet, and desktop dimensions.
