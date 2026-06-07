@@ -3,9 +3,9 @@
 CareerBridge is a dynamic, user-centric career guidance platform built as a high-velocity Proof of Concept (POC) for the Tequity Consulting intern assessment. It features a progressive multi-step onboarding flow, context-aware user profile tracking, interest-targeted career roadmaps, a modular action checklist, and an independent master mentors directory.
 
 ## 🚀 Live Project URLs
-- **Live Deployment Link**: [Insert Your Vercel Deployment Link Here]
+- **Live Deployment Link**: https://career-bridge-poc-u1r2.vercel.app/
 - **Source Code Repository**: https://github.com/mamtasoni233/career-bridge-poc
-- **Video Presentation Walkthrough**: [Insert Your Loom Video Link Here]
+- **Video Presentation Walkthrough**: https://www.loom.com/share/3cca565ff525450d9963752268550772
 
 ---
 
