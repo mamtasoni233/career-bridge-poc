@@ -1,5 +1,4 @@
 'use client';
-import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { allMentorsList } from '../data/mentors';
 import { careerData } from '../data/roadmaps';
